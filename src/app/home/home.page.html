@@ -1,20 +1,87 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      calculator
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <div style="height: 35%;">
+    <div style="background-color: grey; height: 80%; margin-top: 18px;">
+       <p class="_user_query">{{query}}</p>
+    </div>
+  </div>
+  <div style="border: 1rem;">
+    <div class="row actual-box">
+      <div class="col-3" (click)="clearAll()">
+        C
+      </div>
+      <div class="col-3">
+        %
+      </div>
+      <div class="col-3" (click)="removeLast()">
+        ⌫
+      </div>
+      <div class="col-3" (click)="division('/')">
+        ÷
+      </div>
+    </div>
+    <div class="row actual-box">
+      <div class="col-3" (click)="numberEntry('7')">
+        7
+      </div>
+      <div class="col-3" (click)="numberEntry('8')">
+        8
+      </div>
+      <div class="col-3" (click)="numberEntry('9')">
+        9
+      </div>
+      <div class="col-3" (click)="multply('*')">
+        X
+      </div>
+    </div>
+    <div class="row actual-box">
+      <div class="col-3" (click)="numberEntry('4')">
+        4
+      </div>
+      <div class="col-3" (click)="numberEntry('5')">
+        5
+      </div>
+      <div class="col-3" (click)="numberEntry('6')">
+        6
+      </div>
+      <div class="col-3" (click)="minus('-')">
+        -
+      </div>
+    </div>
+    <div class="row actual-box">
+      <div class="col-3" (click)="numberEntry('1')">
+        1
+      </div>
+      <div class="col-3" (click)="numberEntry('2')">
+        2
+      </div>
+      <div class="col-3" (click)="numberEntry('3')">
+        3
+      </div>
+      <div class="col-3" (click)="addition('+')">
+        +
+      </div>
+    </div>
+    <div class="row actual-box">
+      <div class="col-3"  (click)="numberEntry('00')">
+        00
+      </div>
+      <div class="col-3" (click)="numberEntry('0')">
+        0
+      </div>
+      <div class="col-3" >
+        .
+      </div>
+      <div class="col-3" (click)="calculateResult()">
+        =
+      </div>
+    </div>
   </div>
 </ion-content>
