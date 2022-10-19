@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -7,10 +8,19 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {
-    //console.log(this.ifLastNumberIsSpecial());
+  constructor(private toastController: ToastController) {
+    
   }
    query = '';
+   result ;
+
+   async presentToast() {
+    const toast = await this.toastController.create({
+      message: 'please enter valid expression',
+      duration: 1500,
+      position: 'top'
+    });
+  }
 
    isGreaterThen(){
     return this.query.replace(/[+-/*,]/g, "").length>=15;   
@@ -23,6 +33,11 @@ export class HomePage {
    ifLastNumberIsSpecial(){
     const specialChars = /[`+\-=*\\\|\/]/;
     return specialChars.test(this.query.charAt(this.query.length-1));
+   }
+
+   isNotOperator(str: string){
+    const specialChars = /[`+\-=*\\\|\/]/;
+    return specialChars.test(str);
    }
 
    numberEntry(item: string){
@@ -64,10 +79,10 @@ export class HomePage {
    }
 
    calculateResult(){
-      if(!this.ifFirstNumberIsSpecial()){
-
+      if(!this.ifLastNumberIsSpecial()){
+        this.query = eval(this.query).toString();
       }else{
-        
+        this.presentToast();
       }
    }
 }
